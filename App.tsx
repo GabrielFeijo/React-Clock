@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import Clock from './components/Clock';
+import styled from 'styled-components/native';
+import { StatusBar } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+	return (
+		<>
+			<StatusBar barStyle='light-content' />
+			<SafeAreaView>
+				<ScrollView
+					centerContent={true}
+					contentInsetAdjustmentBehavior='automatic'
+					contentContainerStyle={{
+						flexGrow: 1,
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<Clock />
+				</ScrollView>
+			</SafeAreaView>
+		</>
+	);
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const ScrollView = styled.ScrollView`
+	flex: 1;
+	background-color: black;
+`;
+
+const SafeAreaView = styled.SafeAreaView`
+	flex: 1;
+	background-color: black;
+`;
+
+export default App;
